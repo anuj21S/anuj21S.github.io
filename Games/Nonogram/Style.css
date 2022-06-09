@@ -1,0 +1,5 @@
+#Controls{background-color: #659DBD;font-family: sans-serif;font-size: 20px;vertical-align:middle;}
+#NewGame, #Check, #Solve{padding-right: 30px;padding-left: 20px;padding-top: 10px;padding-bottom: 10px;cursor:pointer;transition: background-color 1s;}
+#NewGame:hover , #Check:hover, #Solve:hover{background-color: #557A95;}#Check, #Solve{float: right;}
+#PlayArea{align-items: center;font-family: sans-serif;font-size: 16px;font-weight: lighter;}#Grid{margin: auto;margin-top: 20px;}
+#Grid td{border:1pt solid black;vertical-align:text-top;font-size: 16px;min-width: 20px;height: 20px;padding: 5px;}.row, .col{background-color: #CAFAFE;}
