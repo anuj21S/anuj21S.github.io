@@ -1,0 +1,72 @@
+#PageHead {
+    margin: auto;
+    font-size: 4vw;
+    text-align: center;
+}
+#NewGame {
+    margin: auto;
+    margin-top: 5px;
+    font-size: 3vw;
+    width: 20%;
+    text-align: center;
+    background-color: aquamarine;
+    cursor: pointer;
+}
+#NewGame:hover {
+    background-color: aqua;
+}
+#GameStatus {
+    margin: auto;
+    text-align: center;
+    width: 20%;
+}
+
+#PlayWindow {
+    margin: auto;
+    width: 40%;
+    text-align: center;
+    font-size: 2vw;
+}
+.PlayWindowRow {
+    margin-top: 10px;
+}
+.PWCell{
+    display: inline-block;
+    border: 1pt solid grey;
+    border-radius: 2px;
+    height: 30px;
+    width: 25px;
+    min-width: 25px;
+    font-size: 2vw;
+    text-align: center;
+    text-transform: capitalize;
+    transition: 2s;
+}
+.PWEnter{
+    height: 35px;
+    width: 70px;
+    font-size: 1.5vw;
+    text-align: center;
+}
+.Keys {
+    border: 1pt solid grey;
+    display: inline-block;
+    padding: 5px 15px 5px 15px;
+    font-size: 2vw;
+    margin-top: 3px;
+}
+#Keyboard{
+    margin: auto;
+    width: 60%;
+    text-align: center;
+    font-size: 2vw;
+}
+.InputWord {
+    height: 30px;
+    font-size: 2vw;
+}
+@media screen and (max-width: 800px) {
+    #PlayWindow {
+        width:100%;
+    }
+  }
