@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><title> 2048 </title><link rel="icon" href="Files/Favicon.jpg"><style>
+:root {--backcolor:Lightyellow;--fontsize:1.5vw;--fonttype:Georgia, 'Times New Roman', Times, serif;}
+.GridCell{border: 1pt solid black;width: 50px;height: 50px;padding: 15px;margin: 3px;text-align: center;font-size: 2vw;}
+.GControl{padding: 10px;text-align: center;margin-top: 5px;margin-left: 47.5vw;display: inline-block;width: 50px;height: 30px;cursor: pointer;
+border: 1pt solid gold;background-color: greenyellow;}#GCLeft{margin-left: 40vw;}#GCRight{margin-left: 10vw;}
+#PageHeader, #CreateNew{font-size: 3vw;border: 1pt solid gold;background-color: greenyellow;text-align: center;margin-bottom: 5px;}
+#CreateNew:hover{background-color: gold;cursor: pointer;}
+</style><script>
+addEventListener('keydown',keypressed);var gridVal = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];var turncount=0;
+function keypressed(e){var key = e.keyCode;if (key==37) keyleft();else if (key==38) keyup();else if (key==39) keyright();else if (key==40) keybelow();}
+function keyright(){for (let i=0;i<4;i++){let nzero = [];for(let j=0;j<4;j++){if(gridVal[i][j]!=0)nzero.push(gridVal[i][j]);}for(let j=nzero.length-1;j>0;j--){
+if (nzero[j]==nzero[j-1]){nzero[j]*=2;nzero[j-1]=0;}}let nzero2 = [];for(let j=0;j<nzero.length;j++){if (nzero[j]!=0) nzero2.push(nzero[j]);}
+for(let j=0;j<4;j++){if (j<nzero2.length) gridVal[i][3-j] = nzero2[nzero2.length-j-1];else gridVal[i][3-j] = 0;}}
+let l=randEmpLoc();if (l==-1){alert("Game Over! You played "+turncount+" turns.");}else{let r = randnum();gridVal[Math.floor(l/10)][l%10] = r;}updateGrid();}
+function keyleft(){for (let i=0;i<4;i++){let nzero = [];for(let j=0;j<4;j++){if(gridVal[i][j]!=0) nzero.push(gridVal[i][j]);}for(let j=0;j<nzero.length-1;j++){
+if (nzero[j]==nzero[j+1]){nzero[j]*=2;nzero[j+1]=0;}}let nzero2 = [];for(let j=0;j<nzero.length;j++){if (nzero[j]!=0) nzero2.push(nzero[j]);}
+for(let j=0;j<4;j++){if (j<nzero2.length) gridVal[i][j] = nzero2[j];else gridVal[i][j] = 0;}}let l=randEmpLoc();if (l==-1){
+alert("Game Over! You played "+turncount+" turns.");}else{let r = randnum();gridVal[Math.floor(l/10)][l%10] = r;}updateGrid();}
+function keyup(){for (let i=0;i<4;i++){let nzero = [];for(let j=0;j<4;j++){if(gridVal[j][i]!=0) nzero.push(gridVal[j][i]);}for(let j=0;j<nzero.length-1;j++){
+if (nzero[j]==nzero[j+1]){nzero[j]*=2;nzero[j+1]=0;}}let nzero2 = [];for(let j=0;j<nzero.length;j++){if (nzero[j]!=0) nzero2.push(nzero[j]);}
+for(let j=0;j<4;j++){if (j<nzero2.length) gridVal[j][i] = nzero2[j];else gridVal[j][i] = 0;}}let l=randEmpLoc();if (l==-1){
+alert("Game Over! You played "+turncount+" turns.");}else{let r = randnum();gridVal[Math.floor(l/10)][l%10] = r;}updateGrid();}
+function keybelow(){for (let i=0;i<4;i++){let nzero = [];for(let j=0;j<4;j++){if(gridVal[j][i]!=0)nzero.push(gridVal[j][i]);}for(let j=nzero.length-1;j>0;j--){
+if (nzero[j]==nzero[j-1]){nzero[j]*=2;nzero[j-1]=0;}}let nzero2 = [];for(let j=0;j<nzero.length;j++){if (nzero[j]!=0) nzero2.push(nzero[j]);}
+for(let j=0;j<4;j++){if (j<nzero2.length) gridVal[3-j][i] = nzero2[nzero2.length-j-1];else gridVal[3-j][i] = 0;}}let l=randEmpLoc();if (l==-1){
+alert("Game Over! You played "+turncount+" turns.");}else{let r = randnum();gridVal[Math.floor(l/10)][l%10] = r;}updateGrid();}
+function createNew(){let ga = document.getElementById("GameArea");ga.innerHTML="";let str = "<table style='margin:auto;'>";for (let i=0;i<4;i++){str+="<tr>";
+for (let j=0;j<4;j++){str+= "<td class='GridCell' id='CellR"+i+"C"+j+"'> </td>";gridVal[i][j]=0;}str+="</tr>";}
+str+='</table><div onclick="keyup()" class="GControl"> UP </div><br><div onclick="keyleft()" class="GControl" id="GCLeft"> LEFT </div>';
+str+='<div onclick="keyright()" class="GControl" id="GCRight"> RIGHT </div><br><div onclick="keybelow()" class="GControl"> DOWN </div>';ga.innerHTML=str;
+let l=randEmpLoc();gridVal[Math.floor(l/10)][l%10] = randnum();turncount=0;updateGrid();}function randnum(){return (Math.floor(Math.random()*2)+1)*2;}
+function randEmpLoc(){let empLocs = [];for (let i=0;i<4;i++){for (let j=0;j<4;j++){if (gridVal[i][j]==0) empLocs.push(10*i+j);}}
+if (empLocs.length==0) return -1;else return empLocs[Math.floor(Math.random()*empLocs.length)];}
+function updateGrid(){let ac;turncount++;for (let i=0;i<4;i++){for (let j=0;j<4;j++){ac = document.getElementById("CellR"+i+"C"+j);if (gridVal[i][j]==0){
+ac.innerHTML = "";ac.style.backgroundColor="white";}else {ac.innerHTML = gridVal[i][j];switch(gridVal[i][j]){case 2:ac.style.backgroundColor="yellow";break;
+case 4:ac.style.backgroundColor="aqua";break;case 8:ac.style.backgroundColor="coral";break;case 16:ac.style.backgroundColor="cyan";break;
+case 32:ac.style.backgroundColor="chocolate";break;case 64:ac.style.backgroundColor="crimson";break;case 128:ac.style.backgroundColor="indianred";break;
+case 256:ac.style.backgroundColor="darkturquoise";break;case 512:ac.style.backgroundColor="deeppink";break;case 1024:ac.style.backgroundColor="cadetblue";break;
+case 2048:ac.style.backgroundColor="gold";break;case 4096:ac.style.backgroundColor="indigo";break;case 8192:ac.style.backgroundColor="limegreen";break;
+case 16384:ac.style.backgroundColor="goldenrod";break;}}}}}
+</script></head><body><div id="PageHeader">2048</div><div id="CreateNew" onclick="createNew()">New game</div><div id="GameArea"></div></body></html>
