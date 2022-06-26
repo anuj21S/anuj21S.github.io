@@ -1,8 +1,28 @@
-<html>
-<head> <title> This is my page </title> </head>
-<body><h1>Site Under Development !</h1>
-  <!-- This site is still in development-->
-  <h2> Play Nonogram<h2>
-  <a href="Games/Nonogram/index.html">Play</a>
-</body>
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title> Anuj Singhal </title>
+        <meta charset="utf-8">
+        <link href="Icon.png" rel="icon">
+        <link href="style.css" rel="stylesheet">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <marquee><h1 style="color:red;">Site Under Development.</h1></marquee>
+        <div id = "Tabs">
+            <div class="Tab" id="Tab-Home" onclick="goToTab('Home')">Home</div>
+            <div class="Tab" id="Tab-Games" onclick="goToTab('Games')">Games</div>
+        </div>
+        <div id="Page-Home" class="Page">
+            Hi, I am Anuj Singhal.
+        </div>
+        <div id="Page-Games" class="Page">
+            <p> Here are some of my most favourite games developed by me. Do give them a try ...</p>
+            <h2 class="GameTitle" onclick="window.open('Games/Nonogram/Site.htm')">Nonogram</h2>
+            <h2 class="GameTitle" onclick="window.open('Games/Minesweeper/Site.htm')">Minesweeper</h2>
+            <h2 class="GameTitle" onclick="window.open('Games/2048/Site.htm')">2048</h2>
+            <h2 class="GameTitle" onclick="window.open('Games/Wordle/Site.htm')">Wordle</h2>
+        </div>
+
+    </body>
 </html>
