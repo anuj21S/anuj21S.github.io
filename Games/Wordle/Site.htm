@@ -7,101 +7,44 @@
         <script src="Files/MyScript.js"></script>
     </head>
     <body>
-        <div id="PageHead"> Anuj's Wordle </div>
-        <div id="NewGame" onclick="InitNewGame()">New Game</div>
-        <div id="GameStatus"> No Game Loaded </div>
-        <div id="PlayWindow">
-            <div class="PlayWindowRow" id="PWR1">
-                <input type="text" class="InputWord" id="R1Word" maxlength="5" size="5" class="Word" spellcheck="value" onchange="EnterWord(1)">
-                <input type="button" class="PWEnter" id="PWEnter1" onclick="VerifyWord(1)" value="Enter">
-                <div id="PWR1C1" class="PWCell"></div>
-                <div id="PWR1C2" class="PWCell"></div>
-                <div id="PWR1C3" class="PWCell"></div>
-                <div id="PWR1C4" class="PWCell"></div>
-                <div id="PWR1C5" class="PWCell"></div>
+        <div id="NewGame" onclick="initialize()"> Play Wordle! </div>
+        <div id="PlayArea"></div>
+        <div id="Keyboard" style="display: none;">
+            <div class="keyrow">
+                <div class = "key" id = "KeyQ" onclick="KeyInput('KeyQ')">Q</div>
+                <div class = "key" id = "KeyW" onclick="KeyInput('KeyW')">W</div>
+                <div class = "key" id = "KeyE" onclick="KeyInput('KeyE')">E</div>
+                <div class = "key" id = "KeyR" onclick="KeyInput('KeyR')">R</div>
+                <div class = "key" id = "KeyT" onclick="KeyInput('KeyT')">T</div>
+                <div class = "key" id = "KeyY" onclick="KeyInput('KeyY')">Y</div>
+                <div class = "key" id = "KeyU" onclick="KeyInput('KeyU')">U</div>
+                <div class = "key" id = "KeyI" onclick="KeyInput('KeyI')">I</div>
+                <div class = "key" id = "KeyO" onclick="KeyInput('KeyO')">O</div>
+                <div class = "key" id = "KeyP" onclick="KeyInput('KeyP')">P</div>
             </div>
-            <div class="PlayWindowRow" id="PWR2">
-                <input type="text" class="InputWord" id="R2Word" maxlength="5" size="5" class="Word" spellcheck="value" onchange="EnterWord(2)">
-                <input type="button" class="PWEnter" id="PWEnter2" onclick="VerifyWord(2)" value="Enter">
-                <div id="PWR2C1" class="PWCell"></div>
-                <div id="PWR2C2" class="PWCell"></div>
-                <div id="PWR2C3" class="PWCell"></div>
-                <div id="PWR2C4" class="PWCell"></div>
-                <div id="PWR2C5" class="PWCell"></div>
+            <div class="keyrow">
+                <div class = "key" id = "KeyA" onclick="KeyInput('KeyA')">A</div>
+                <div class = "key" id = "KeyS" onclick="KeyInput('KeyS')">S</div>
+                <div class = "key" id = "KeyD" onclick="KeyInput('KeyD')">D</div>
+                <div class = "key" id = "KeyF" onclick="KeyInput('KeyF')">F</div>
+                <div class = "key" id = "KeyG" onclick="KeyInput('KeyG')">G</div>
+                <div class = "key" id = "KeyH" onclick="KeyInput('KeyH')">H</div>
+                <div class = "key" id = "KeyJ" onclick="KeyInput('KeyJ')">J</div>
+                <div class = "key" id = "KeyK" onclick="KeyInput('KeyK')">K</div>
+                <div class = "key" id = "KeyL" onclick="KeyInput('KeyL')">L</div>
+                <div class = "key" id = "Enter" onclick="KeyInput('Enter')">ENTER</div>
             </div>
-            <div class="PlayWindowRow" id="PWR3">
-                <input type="text" class="InputWord" id="R3Word" maxlength="5" size="5" class="Word" spellcheck="value" onchange="EnterWord(3)">
-                <input type="button" class="PWEnter" id="PWEnter3" onclick="VerifyWord(3)" value="Enter">
-                <div id="PWR3C1" class="PWCell"></div>
-                <div id="PWR3C2" class="PWCell"></div>
-                <div id="PWR3C3" class="PWCell"></div>
-                <div id="PWR3C4" class="PWCell"></div>
-                <div id="PWR3C5" class="PWCell"></div>
+            <div class="keyrow">
+                <div class = "key" id = "KeyZ" onclick="KeyInput('KeyZ')">Z</div>
+                <div class = "key" id = "KeyX" onclick="KeyInput('KeyX')">X</div>
+                <div class = "key" id = "KeyC" onclick="KeyInput('KeyC')">C</div>
+                <div class = "key" id = "KeyV" onclick="KeyInput('KeyV')">V</div>
+                <div class = "key" id = "KeyB" onclick="KeyInput('KeyB')">B</div>
+                <div class = "key" id = "KeyN" onclick="KeyInput('KeyN')">N</div>
+                <div class = "key" id = "KeyM" onclick="KeyInput('KeyM')">M</div>
+                <div class = "key" id = "Backspace" onclick="KeyInput('Backspace')">BACKSPACE</div>
             </div>
-            <div class="PlayWindowRow" id="PWR4">
-                <input type="text" class="InputWord" id="R4Word" maxlength="5" size="5" class="Word" spellcheck="value" onchange="EnterWord(4)">
-                <input type="button" class="PWEnter" id="PWEnter4" onclick="VerifyWord(4)" value="Enter">
-                <div id="PWR4C1" class="PWCell"></div>
-                <div id="PWR4C2" class="PWCell"></div>
-                <div id="PWR4C3" class="PWCell"></div>
-                <div id="PWR4C4" class="PWCell"></div>
-                <div id="PWR4C5" class="PWCell"></div>
-            </div>
-            <div class="PlayWindowRow" id="PWR5">
-                <input type="text" class="InputWord" id="R5Word" maxlength="5" size="5" class="Word" spellcheck="value" onchange="EnterWord(5)">
-                <input type="button" class="PWEnter" id="PWEnter5" onclick="VerifyWord(5)" value="Enter">
-                <div id="PWR5C1" class="PWCell"></div>
-                <div id="PWR5C2" class="PWCell"></div>
-                <div id="PWR5C3" class="PWCell"></div>
-                <div id="PWR5C4" class="PWCell"></div>
-                <div id="PWR5C5" class="PWCell"></div>
-            </div>
-            <div class="PlayWindowRow" id="PWR6">
-                <input type="text" class="InputWord" id="R6Word" maxlength="5" size="5" class="Word" spellcheck="value" onchange="EnterWord(6)">
-                <input type="button" class="PWEnter" id="PWEnter6" onclick="VerifyWord(6)" value="Enter">
-                <div id="PWR6C1" class="PWCell"></div>
-                <div id="PWR6C2" class="PWCell"></div>
-                <div id="PWR6C3" class="PWCell"></div>
-                <div id="PWR6C4" class="PWCell"></div>
-                <div id="PWR6C5" class="PWCell"></div>
-            </div>
-
         </div>
-        <div id="Keyboard">
-            <div class="keysRow">
-                <div class="Keys" id="KeyQ">Q</div>
-                <div class="Keys" id="KeyW">W</div>
-                <div class="Keys" id="KeyE">E</div>
-                <div class="Keys" id="KeyR">R</div>
-                <div class="Keys" id="KeyT">T</div>
-                <div class="Keys" id="KeyY">Y</div>
-                <div class="Keys" id="KeyU">U</div>
-                <div class="Keys" id="KeyI">I</div>
-                <div class="Keys" id="KeyO">O</div>
-                <div class="Keys" id="KeyP">P</div>
-            </div>
-            <div class="keysRow">
-                <div class="Keys" id="KeyA">A</div>
-                <div class="Keys" id="KeyS">S</div>
-                <div class="Keys" id="KeyD">D</div>
-                <div class="Keys" id="KeyF">F</div>
-                <div class="Keys" id="KeyG">G</div>
-                <div class="Keys" id="KeyH">H</div>
-                <div class="Keys" id="KeyJ">J</div>
-                <div class="Keys" id="KeyK">K</div>
-                <div class="Keys" id="KeyL">L</div>
-            </div>
-            <div class="keysRow">
-                <div class="Keys" id="KeyZ">Z</div>
-                <div class="Keys" id="KeyX">X</div>
-                <div class="Keys" id="KeyC">C</div>
-                <div class="Keys" id="KeyV">V</div>
-                <div class="Keys" id="KeyB">B</div>
-                <div class="Keys" id="KeyN">N</div>
-                <div class="Keys" id="KeyM">M</div>
-            </div>
-
-        </div>
-
+        <script src="Files/words.js"></script>
    </body>
 </html>
