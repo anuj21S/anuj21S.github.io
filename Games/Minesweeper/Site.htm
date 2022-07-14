@@ -1,0 +1,80 @@
+<!DOCTYPE html><html><head><title> Minesweeper </title><link rel="icon" href="Files/Icon.png">
+<style>
+:root{font-family: sans-serif;}
+#PageHeader{font-size: 3.5vw;text-align: center;background-color: #5a44db;margin-bottom: 10px;padding: 10px;}
+#CreateNew{font-size:2.5vw;background-color:#87faf6;text-align:center;cursor:pointer;margin-bottom:10px;margin-top:10px;padding: 10px;}
+#CreateNew:hover{background-color:#5a44db;}
+.Cells{padding: 15px;cursor: pointer;border: 2px solid white;background-color: rgb(70, 70, 140);width:20px}
+.Cells:hover{background-color: rgb(40, 40, 180);}
+#GameArea{margin: auto; width: fit-content;}
+</style>
+<script>
+var mines = [];let size = 10;let mcount = 10;let revealed = 0;
+function createNew(){mines=[];revealed=0;let ga = document.getElementById("GameArea");ga.innerHTML="";
+// Creating the grid
+mcount = document.getElementById("MinesCount").value;size = document.getElementById("GridSize").value;let str = "";str+= "<table>";
+for (let i=0;i<size;i++){str+="<tr>";for (let j=0;j<size;j++){
+str+="<td class='Cells' id='CellR"+i+"C"+j+"' onclick='reveal("+i+","+j+")'>&#9935</td>";}str+="</tr>";}str+= "</table>";ga.innerHTML=str;
+// Random indices of mines;
+let mx = [];let my = [];let mloc = [];let arbitloc = 0;
+for (let i = 0;i< mcount;){arbitloc = Math.floor(Math.random()*size)*(100) + Math.floor(Math.random()*size);
+if (mloc.includes(arbitloc) || arbitloc==0){}else{mloc.push(arbitloc);i++;}}
+// Populating the numbers behind the tile
+let n;let cloc=0;for (let i=0;i<size;i++){let m = [];for (let j=0;j<size;j++){cloc = i*(100)+j;if (mloc.includes(cloc)){n=-1;}else{
+n = mloc.includes(cloc-101);n += mloc.includes(cloc-100);n += mloc.includes(cloc-99);n += mloc.includes(cloc-1);n += mloc.includes(cloc+1);
+n += mloc.includes(cloc+99);n += mloc.includes(cloc+100);n += mloc.includes(cloc+101);}m.push(n);}mines.push(m);}}
+function reveal(r,c){
+    let x = mines[r][c];
+    let ac = document.getElementById("CellR"+r+"C"+c);
+    ac.style.backgroundColor = "lightyellow";
+    ac.style.cursor="default";
+    ac.onclick = "";
+    revealed++;
+    if (x==-1){ac.innerHTML="&#128163";
+        ac.style.borderColor = "red";alert("Game over");
+        revealall();
+    }else {
+        if(x==0) {
+            ac.innerHTML = "";
+            if (r!=0){
+                document.getElementById("CellR"+(r-1)+"C"+c).click();
+                if (c!=0){
+                    document.getElementById("CellR"+(r-1)+"C"+(c-1)).click();
+                }
+                if (c + 1 < size){
+                    document.getElementById("CellR"+(r-1)+"C"+(c+1)).click();
+                }
+            }
+            if (r+1 < size){
+                document.getElementById("CellR"+(r+1)+"C"+c).click();
+                if (c!=0){
+                    document.getElementById("CellR"+(r+1)+"C"+(c-1)).click();
+                }
+                if (c + 1 < size){
+                    document.getElementById("CellR"+(r+1)+"C"+(c+1)).click();
+                }
+            }
+            if (c + 1 < size){
+                document.getElementById("CellR"+(r)+"C"+(c+1)).click();
+            }
+            if (c!=0){
+                document.getElementById("CellR"+(r)+"C"+(c-1)).click();
+            }
+        }else {
+            ac.innerHTML = x;
+        }
+        if (revealed == size*size-mcount){
+            alert("Hurray You won the game");
+            revealall();
+        }
+    }
+}
+function revealall(){let x = 0;let ac;for (let i=0;i<size;i++){for (let j=0;j<size;j++){x = mines[i][j];ac = document.getElementById("CellR"+i+"C"+j);
+ac.style.backgroundColor = "lightyellow";ac.style.cursor="default";ac.onclick = "";if (x==-1){ac.innerHTML="&#128163";}else if(x==0){ac.innerHTML = "";
+}else{ac.innerHTML = x;}}}}
+
+
+
+</script></head><body><div id="PageHeader">Minesweeper</div><label for="minesCount">No. of mines: &ThickSpace;</label><input type="number" id="MinesCount" value="10">
+<label for="GridSize">Size: &ThickSpace;</label><input type="number" id="GridSize" value="10"><div id="CreateNew" onclick="createNew()">New Game</div>
+<div id="GameArea"></div></body></html>
