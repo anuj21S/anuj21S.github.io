@@ -1,5 +1,4 @@
 var ans = "";var acol = 0;var arow = 0;var playing = 0;
-
 window.addEventListener('keydown',(evt)=>{
     if (!playing){
         return;
@@ -96,89 +95,4 @@ function initialize(){
     acol = 0;
     arow = 0;
     ans = toGuess[Math.floor(Math.random()*toGuess.length)];
-}
-
-function NewGame(){
-    // Clear Input Fields
-
-    for (let i=1;i<=6;i++){
-        document.getElementById("R"+i+"Word").value="";
-        for (let j=1;j<=5;j++){
-            document.getElementById("PWR"+i+"C"+j).innerHTML="";
-            document.getElementById("PWR"+i+"C"+j).style.backgroundColor="white";
-        }
-    }
-    // Clear Keyboard Formatting
-    let str = "QWERTYUIOPASDFGHJKLZXCVBNM";
-    for (let i=0;i<26;i++){
-        document.getElementById("Key"+str.charAt(i)).style.backgroundColor="white";
-    }
-
-    // Get New Word
-    let wordindex=0;
-    try{
-        if (localStorage.getItem("WI").length>0){
-            wordindex = Number.parseInt(localStorage.getItem("WI"));
-            wordindex = wordindex+1;
-            localStorage.removeItem("WI");
-            localStorage.setItem("WI",wordindex);
-        }
-    }catch{
-    }
-    if (wordindex==0){
-        localStorage.setItem("WI",0);
-    }
-    myWord = words[wordindex];
-    document.getElementById("GameStatus").innerHTML = "Game Loaded";
-}
-function EnterWord(x){
-    let w = document.getElementById("R"+x+"Word").value;
-    for (let i=1;i<=5;i++){
-        document.getElementById("PWR"+x+"C"+i).innerHTML=w.charAt(i-1).toUpperCase();
-    }
-    document.getElementById("PWEnter"+x).focus();
-}
-function VerifyWord(x){
-    if (myWord!=""){
-        let w=document.getElementById("R"+x+"Word").value;
-        for (i=0;i<5;i++){
-            if (w.charAt(i)==myWord.charAt(i)){
-                document.getElementById("PWR"+x+"C"+(i+1)).style.backgroundColor="green";
-                document.getElementById("Key"+w.charAt(i).toUpperCase()).style.backgroundColor="yellow";                
-            }else if (myWord.includes(w.charAt(i))==1){
-                document.getElementById("PWR"+x+"C"+(i+1)).style.backgroundColor="yellow";
-                document.getElementById("Key"+w.charAt(i).toUpperCase()).style.backgroundColor="yellow";                
-            }else{
-                document.getElementById("PWR"+x+"C"+(i+1)).style.backgroundColor="grey";
-                document.getElementById("Key"+w.charAt(i).toUpperCase()).style.backgroundColor="gray";                
-            }
-        }
-        if (w==myWord) {
-            Victory(x);
-            document.getElementById("R"+(x+1)+"Word").focus();
-        }
-
-        else Defeat(x);
-
-    }else{
-        alert("Press New Game!");
-    }
-}
-function Victory(y){
-    alert("Wonderful! You solved it in "+y+" guesses.");
-    myWord="";
-    document.getElementById("GameStatus").innerHTML = "No Game Loaded";
-    document.getElementById("NewGame").focus();
-}
-function Defeat(y){
-    if (y==6){
-        alert ("Better Luck Next Time, The word was : " + myWord);
-        myWord="";
-        document.getElementById("GameStatus").innerHTML = "No Game Loaded";
-        document.getElementById("NewGame").focus();
-    }
-    else{
-        document.getElementById("R"+(y+1)+"Word").focus();
-    }
-
 }
