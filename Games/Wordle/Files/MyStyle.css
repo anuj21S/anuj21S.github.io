@@ -1,0 +1,54 @@
+#NewGame{
+    font-family: sans-serif;
+    font-size: 2.5vw;
+    background-color: #659DBD;
+    text-align: center;
+    padding: 15px;
+    cursor:pointer;
+    transition: background-color 1s;
+}
+#NewGame:hover{
+    background-color: #557A95;
+}
+
+#PlayArea{
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+#Grid{
+    border-spacing: 5px;
+    margin: auto;
+    margin-top: 10px;
+}
+.Gcell{
+    text-align: center;
+    min-width: 20px;
+    height: 30px;
+    border: 1pt solid black;
+    padding : 5px 10px;
+}
+#Keyboard{
+    width: fit-content;
+    align-items: center;
+    margin: auto;
+}
+.keyrow{
+    width: fit-content;
+    margin: auto;
+    align-items: center;
+    align-content: center;    
+    margin-bottom: 5px;
+}
+.key{
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 2vw;
+    display: inline-block;
+    text-align: center;
+    border: 1pt solid black;
+    padding: 10px;
+}
+.key:hover{
+    background-color: #659DBD;
+}
