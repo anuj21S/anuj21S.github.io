@@ -1,0 +1,57 @@
+#Tabs{
+    background-color: #242582;
+    font-size: 20px;
+    font-family: sans-serif;
+    color : white;
+}
+.Tab{
+    padding: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+.Tab:hover{
+    background-color: #242555;
+}
+#Page-Home{
+    display: block;
+}
+.Page{
+    display: none;
+}
+.GameTitle{
+    text-align: center;
+    background-color: #5a44db;
+    font-family: sans-serif;
+    padding: 15px;
+    margin:5px 100px;
+    color: white;
+    border-radius: 10px;
+    cursor:pointer;
+    transition: 0.5s;
+}
+.GameTitle:hover{
+    background-color: #10009e;
+}
+#ProfileImage{
+    float: right;
+    height: 250px;
+    width: 250px;
+    border: 1pt solid black;
+    border-radius: 75px;
+    margin: 10px 20px 10px 20px;
+    object-fit: cover;
+}
+#Name{
+    font-family: sans-serif;
+    padding:10px;
+    font-size: 3.5vw;
+    margin: 0;
+    align-items: baseline;
+    background-color: #87faf6;
+}
+#About{
+    font-family: sans-serif;
+    margin-left: 20px;
+    padding-left: 5px;
+    font-size: 1.5vw;
+}
