@@ -34,8 +34,8 @@
 }
 #ProfileImage{
     float: right;
-    height: 200px;
-    width: 200px;
+    max-height: 200px;
+    max-width: 200px;
     border: 1pt solid black;
     border-radius: 75px;
     margin: 10px 20px 10px 20px;
