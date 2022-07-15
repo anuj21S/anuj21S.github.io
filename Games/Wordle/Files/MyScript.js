@@ -17,9 +17,7 @@ function Controller(k){
                 for (let i =0; i<5; i++){
                     if (w.charAt(i).toLowerCase() == ans.charAt(i)){
                         document.getElementById("R"+ arow + "C" + i).style.backgroundColor = "green";
-                        if (document.getElementById("Key" + w.charAt(i)).style.backgroundColor == "white"){
-                            document.getElementById("Key" + w.charAt(i)).style.backgroundColor = "green";
-                        }
+                        document.getElementById("Key" + w.charAt(i)).style.backgroundColor = "green";
                     }else if(ans.includes(w.charAt(i).toLowerCase())){
                         document.getElementById("R"+ arow + "C" + i).style.backgroundColor = "yellow";
                         if (document.getElementById("Key" + w.charAt(i)).style.backgroundColor == "white"){
